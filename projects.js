@@ -1,70 +1,147 @@
-const projects = [
-  {name:'Online Exam System',repo:'Online-Exam-website-frontend-and-backend',category:'web',type:'Full-stack web application',description:'An online examination platform built as a full-stack web application. See the repository for the current feature set and implementation.',stack:['JavaScript','Node.js','MongoDB','Express'],featured:true},
-  {name:'ShareHub',repo:'ShareHub',category:'web',type:'Web application · Spring Boot',description:'A community resource-sharing platform connecting people who can offer useful resources with people who need support. Includes a web experience and REST API.',stack:['Java','Spring Boot','Thymeleaf','Spring Security'],featured:true},
-  {name:'Event Management System',repo:'Event-management',category:'web',type:'Full-stack web application',description:'An event management and booking project built with a React front end and a Node and Express backend.',stack:['React','Node.js','Express','MongoDB'],featured:true},
-  {name:'Smart Laundry System',repo:'update-laundry',category:'web',type:'Web application',description:'A laundry service management website with a user dashboard, built with Firebase services.',stack:['JavaScript','Firebase','Firestore','Tailwind CSS'],demo:'https://maahfuzdev.github.io/update-laundry/',featured:true},
-  {name:'CareerAI',repo:'AI-Career-Recommender',category:'data',type:'AI · Streamlit application',description:'A career recommendation tool that uses a person’s skills, interests and academic profile to suggest career directions.',stack:['Python','Machine learning','Streamlit'],featured:true},
-  {name:'Student Score Predictor',repo:'Student-Score-Predictor',category:'data',type:'Machine learning · Streamlit app',description:'A machine learning project for exploring and predicting student performance.',stack:['Python','Machine learning','Streamlit'],featured:true},
-  {name:'Smart Bike Management',repo:'smart-bike-management-app',category:'mobile',type:'Mobile application',description:'A Flutter project for bike rental management with location features.',stack:['Flutter','Dart','Firebase','Google Maps'],featured:true},
-  {name:'Currency Converter',repo:'currency-converter-app',category:'mobile',type:'Mobile application',description:'A Flutter currency conversion app exploring exchange-rate API integration and offline use.',stack:['Flutter','Dart','REST API'],featured:true},
-  {name:'Location Services',repo:'My-Location-',category:'mobile',type:'Mobile application',description:'A mobile location project using geolocation and map services.',stack:['Flutter','Dart','Geolocation','Google Maps'],featured:true},
-  {name:'Weather Dashboard',repo:'Weather-App',category:'web',type:'Live web application',description:'A responsive weather dashboard with current conditions, forecasts, theme controls and Celsius/Fahrenheit switching.',stack:['HTML','CSS','JavaScript','Weather API'],demo:'https://maahfuzdev.github.io/Weather-App/',featured:true},
-  {name:'Doctor Appointment Website',repo:'doctor-site',category:'web',type:'Web application',description:'A web project for browsing doctor information and handling appointment booking flows.',stack:['JavaScript','Firebase','Firestore'],featured:true},
-  {name:'Cricket Score Keeper',repo:'Cricket-Report',category:'web',type:'Web application',description:'A cricket scoring project for recording match scores and viewing match information.',stack:['JavaScript','Firebase','Firestore'],featured:true},
-  {name:'Result Sheet Generator',repo:'Result',category:'web',type:'Web application',description:'A browser-based tool for entering marks and generating student result sheets.',stack:['JavaScript','Firebase','Firestore'],featured:true},
-  {name:'Language Converter',repo:'Language-Converter',category:'web',type:'Web application',description:'A language translation website with voice output, built around browser technologies and a translation service.',stack:['HTML','CSS','JavaScript','Translation API'],featured:true},
-  {name:'Personal Money Management System',repo:'https://github.com/blackcodd/APMMS',category:'web',type:'Full-stack application · team project',description:'A personal finance management project with analytics and report generation.',stack:['Java','Spring Boot','SQL'],featured:true},
-  {name:'Online Exam (early version)',repo:'Online-Exam',category:'web',type:'Web application',description:'An earlier online exam project, separate from the newer full-stack exam system.',stack:['HTML','JavaScript']},
-  {name:'Intern Demo',repo:'intern-demo',category:'web',type:'Spring Boot CRUD application',description:'A CRUD demo application for creating, viewing, editing and deleting records.',stack:['Java','Spring Boot','Thymeleaf','PostgreSQL']},
-  {name:'Laundry System',repo:'laundry_system',category:'web',type:'Web development project',description:'An additional laundry service project in the public repository collection.',stack:['HTML','JavaScript']},
-  {name:'Laundry Website',repo:'Laundry',category:'web',type:'Web development project',description:'An earlier web project in the laundry service domain.',stack:['HTML','CSS']},
-  {name:'Express.js Project',repo:'express_js',category:'web',type:'Backend practice project',description:'A project for practicing server-side development with Express.js.',stack:['JavaScript','Express.js']},
-  {name:'React Project',repo:'react-project-1-',category:'web',type:'Frontend practice project',description:'A React project exploring component-based frontend development.',stack:['React','JavaScript','CSS']},
-  {name:'Portfolio Website',repo:'my-portfolio',category:'web',type:'Personal website · source code',description:'The source repository for my developer portfolio website.',stack:['HTML','CSS','JavaScript']},
-  {name:'Information Security Lab',repo:'Information-Security-Lab',category:'data',type:'Coursework & lab exercises',description:'A collection of practical exercises and coursework related to information security.',stack:['Python','Information security']},
-  {name:'PCA',repo:'PCA',category:'data',type:'Data science learning project',description:'A project exploring principal component analysis and dimensionality reduction.',stack:['Python','Data science']},
-  {name:'Data Science',repo:'Data-science',category:'data',type:'Learning repository',description:'Data science practice and exploration in Python.',stack:['Python','Data science']},
-  {name:'LeetCode Solutions',repo:'leetcode-solutions',category:'practice',type:'Coding practice',description:'Solutions and practice exercises for algorithmic problems.',stack:['Python','Algorithms']},
-  {name:'Temperature Converter',repo:'Temperature-Converter',category:'practice',type:'Frontend practice project',description:'A simple browser-based temperature conversion tool.',stack:['HTML','CSS','JavaScript'],demo:'https://gilded-choux-fb3f6c.netlify.app'},
-  {name:'Calculator',repo:'calcultor',category:'practice',type:'Frontend practice project',description:'A calculator project built with browser technologies.',stack:['HTML','CSS','JavaScript']},
-  {name:'Educational Form',repo:'Educational-form',category:'practice',type:'Frontend practice project',description:'A responsive education application form with input validation.',stack:['HTML','CSS','Form validation']},
-  {name:'Newspaper Layout',repo:'Newspaper',category:'practice',type:'Frontend practice project',description:'A responsive newspaper-style page layout.',stack:['HTML','Bootstrap','CSS Grid']},
-  {name:'Tailwind CSS Practice',repo:'Tailwind-css',category:'practice',type:'UI practice project',description:'A collection of interface experiments built while learning Tailwind CSS.',stack:['HTML','Tailwind CSS','JavaScript']},
-  {name:'Tuition CV',repo:'Tution_CV',category:'practice',type:'Web development project',description:'A small web project for presenting a tutoring profile.',stack:['HTML','CSS']},
-  {name:'Personal Bio Page',repo:'my-bio',category:'practice',type:'Web development project',description:'A personal profile page built with web technologies.',stack:['HTML','CSS']},
-  {name:'Aim',repo:'Aim',category:'practice',type:'JavaScript practice project',description:'A small JavaScript project from my learning and practice work.',stack:['JavaScript','HTML','CSS']},
-  {name:'Dinamic',repo:'dinamic',category:'practice',type:'JavaScript practice project',description:'A small project from my web development practice.',stack:['JavaScript','HTML','CSS']},
-  {name:'Flutter Practice',repo:'flutter',category:'mobile',type:'Mobile development practice',description:'A repository for Flutter and mobile development experiments.',stack:['Flutter','Dart']},
-  {name:'Personal Mini Project',repo:'my-love',category:'practice',type:'Personal web experiment',description:'A small personal web experiment from my project collection.',stack:['HTML','CSS','JavaScript']}
+const projectData = [
+  {
+    name: 'QuizMaster — Online Examination Platform',
+    kind: '01 / Full-stack product',
+    size: 'large',
+    art: 'exam',
+    description: 'A role-aware exam platform for teachers and students. Teachers build question banks, schedule timed exams, grade written work and release results; students complete assigned exams and review their history.',
+    stack: ['Node.js', 'Express 5', 'MongoDB', 'Mongoose', 'EJS', 'Session auth', 'bcryptjs'],
+    demo: 'https://online-exam-app-yirp.onrender.com',
+    repo: 'Online-Exam-website-frontend-and-backend',
+    alt: 'Teacher analytics dashboard from the online examination platform'
+  },
+  {
+    name: 'ShareHub — Community Resource Platform',
+    kind: '02 / Java · Spring Boot',
+    size: 'half',
+    art: 'share',
+    description: 'A community platform for people who can offer resources and people who need support. Includes donor and recipient roles, protected account flows, PostgreSQL persistence and a REST API.',
+    stack: ['Java 17', 'Spring Boot', 'Spring Security', 'PostgreSQL', 'JPA', 'Flyway', 'Docker'],
+    demo: 'https://share-hub-cmiv.onrender.com/dashboard',
+    repo: 'ShareHub'
+  },
+  {
+    name: 'Smart Bike Management',
+    kind: '03 / Flutter · Location',
+    size: 'half',
+    art: 'map',
+    description: 'A Flutter vehicle companion app with live distance tracking, fuel logs, trip history, map views and nearby places using Google Maps and device location.',
+    stack: ['Flutter', 'Dart', 'Google Maps', 'Geolocator', 'Places API', 'fl_chart'],
+    repo: 'smart-bike-management-app'
+  },
+  {
+    name: 'Smart Laundry System',
+    kind: '04 / Firebase web app',
+    size: 'half',
+    art: 'firebase',
+    description: 'A laundry service website with customer and admin pages, Firebase authentication and Firestore-backed user and service data.',
+    stack: ['JavaScript', 'Firebase Auth', 'Firestore', 'HTML', 'CSS'],
+    demo: 'https://maahfuzdev.github.io/update-laundry/',
+    repo: 'update-laundry'
+  },
+  {
+    name: 'Location Tracker',
+    kind: '05 / Flutter · Maps',
+    size: 'half',
+    art: 'map',
+    description: 'A Flutter location app that follows a position stream, draws a route on Google Maps and saves daily distance locally on the device.',
+    stack: ['Flutter', 'Dart', 'Geolocator', 'Google Maps', 'SharedPreferences'],
+    repo: 'My-Location-'
+  },
+  {
+    name: 'CareerAI — Career Recommendation',
+    kind: '06 / Machine learning',
+    size: 'half',
+    art: 'ai',
+    description: 'A small Streamlit app that uses a trained Random Forest classifier to suggest career directions from five skill ratings.',
+    stack: ['Python', 'scikit-learn', 'NumPy', 'Streamlit'],
+    repo: 'AI-Career-Recommender'
+  },
+  {
+    name: 'Student Performance Predictor',
+    kind: '07 / Machine learning',
+    size: 'half',
+    art: 'ai',
+    description: 'A Streamlit project that predicts a score from study hours and attendance, then compares the result with a simple dataset visualization.',
+    stack: ['Python', 'scikit-learn', 'pandas', 'Matplotlib', 'Streamlit'],
+    repo: 'Student-Score-Predictor'
+  },
+  {
+    name: 'User Management CRUD',
+    kind: '08 / Java · PostgreSQL',
+    size: 'half',
+    art: 'code',
+    description: 'A server-rendered CRUD application with controller, service and repository layers for creating, listing, updating and deleting user records.',
+    stack: ['Java 17', 'Spring Boot', 'Spring Data JPA', 'Thymeleaf', 'PostgreSQL'],
+    repo: 'intern-demo'
+  }
 ];
 
-const grid = document.getElementById('projectGrid');
-const count = document.getElementById('projectCount');
+const archiveData = [
+  {name:'Weather Dashboard',category:'web',description:'Responsive current weather and forecast interface, with saved city, theme and unit preferences.',stack:'JavaScript · OpenWeather API',repo:'Weather-App',demo:'https://maahfuzdev.github.io/Weather-App/'},
+  {name:'Doctor Appointment Website',category:'web',description:'Appointment submission through Firebase Realtime Database, with doctor profile data and image storage flows.',stack:'JavaScript · Firebase · Realtime Database · Storage',repo:'doctor-site'},
+  {name:'Cricket Score & NRR Tracker',category:'web',description:'Browser-based scorekeeping with Net Run Rate calculations, Chart.js visualization and saved match history.',stack:'JavaScript · Chart.js · LocalStorage',repo:'Cricket-Report'},
+  {name:'Language Converter',category:'web',description:'Translation interface paired with browser text-to-speech controls.',stack:'JavaScript · Fetch API · Web Speech API',repo:'Language-Converter'},
+  {name:'Result Sheet Generator',category:'web',description:'A lightweight browser tool for entering student marks and displaying a result sheet.',stack:'HTML · CSS · JavaScript',repo:'Result'},
+  {name:'React User Management',category:'web',description:'A CRUD learning project with a React client and a Node/Express and MongoDB backend.',stack:'React · Node.js · Express · MongoDB',repo:'react-project-1-'},
+  {name:'Express.js Server Exercise',category:'web',description:'A compact Express server project for practicing server setup and route handling.',stack:'Node.js · Express.js',repo:'express_js'},
+  {name:'Personal Money Management System',category:'web',description:'A team project for managing personal finances and generating reports. The repository is hosted under the collaborator account.',stack:'Java · Spring Boot · SQL',repo:'https://github.com/blackcodd/APMMS'},
+  {name:'Online Exam — Early Version',category:'web',description:'An earlier web-based examination project, kept separate from the newer QuizMaster application.',stack:'HTML · CSS · JavaScript',repo:'Online-Exam'},
+  {name:'Personal Portfolio Source',category:'web',description:'Source for this portfolio website.',stack:'HTML · CSS · JavaScript',repo:'my-portfolio'},
+  {name:'Information Security Lab',category:'data',description:'Python exercises implementing Caesar, Diffie–Hellman, Hill, Playfair and RSA cryptography examples.',stack:'Python · Cryptography fundamentals',repo:'Information-Security-Lab'},
+  {name:'PCA on the Iris Dataset',category:'data',description:'A dimensionality-reduction exercise that visualizes the Iris dataset in principal-component space.',stack:'Python · scikit-learn · Matplotlib',repo:'PCA'},
+  {name:'Breadth-First Search',category:'data',description:'A small Python graph traversal exercise with a sample dataset.',stack:'Python · Graph algorithms',repo:'Data-science'},
+  {name:'LeetCode Solutions',category:'practice',description:'Solutions and exercises for algorithm and data-structure problems.',stack:'Python · Problem solving',repo:'leetcode-solutions'},
+  {name:'Productivity Tracker',category:'web',description:'A browser-based productivity tracker with goals, quotes and chart summaries.',stack:'JavaScript · Chart.js · LocalStorage',repo:'Aim'},
+  {name:'Temperature Converter',category:'practice',description:'A compact temperature conversion tool.',stack:'HTML · CSS · JavaScript',repo:'Temperature-Converter',demo:'https://gilded-choux-fb3f6c.netlify.app'},
+  {name:'Calculator',category:'practice',description:'A small interactive calculator built for frontend practice.',stack:'HTML · CSS · JavaScript',repo:'calcultor'},
+  {name:'Education Application Form',category:'practice',description:'A responsive form project with client-side validation.',stack:'HTML · CSS · JavaScript',repo:'Educational-form'},
+  {name:'Newspaper Layout',category:'practice',description:'A responsive editorial page layout and component styling exercise.',stack:'HTML · CSS · Bootstrap',repo:'Newspaper'},
+  {name:'Tailwind CSS Studies',category:'practice',description:'A collection of UI and layout experiments using Tailwind CSS.',stack:'HTML · Tailwind CSS',repo:'Tailwind-css'},
+  {name:'Tuition CV',category:'practice',description:'A small personal profile site for tutoring work.',stack:'HTML · CSS',repo:'Tution_CV'},
+  {name:'Animation Demo',category:'practice',description:'A small browser animation experiment.',stack:'JavaScript · HTML · CSS',repo:'dinamic'},
+  {name:'Laundry Website — Earlier Builds',category:'practice',description:'Earlier static laundry-service interface experiments; the Firebase-backed project above is the current highlighted version.',stack:'HTML · CSS · JavaScript',repo:'laundry_system'},
+  {name:'Laundry Site — First Build',category:'practice',description:'An early static version of the laundry service project.',stack:'HTML · CSS',repo:'Laundry'}
+];
 
-function renderProjects(filter = 'all') {
-  const items = filter === 'all' ? projects : projects.filter(project => project.category === filter);
-  count.textContent = `${items.length} projects`;
-  grid.innerHTML = items.map(project => {
-    const repoUrl = project.repo.startsWith('http')
-      ? project.repo
-      : `https://github.com/maahfuzdev/${project.repo}`;
-    const links = `${project.demo ? `<a href="${project.demo}" target="_blank" rel="noopener">Live demo ↗</a>` : ''}<a href="${repoUrl}" target="_blank" rel="noopener">Source code ↗</a>`;
-    return `<article class="project-card ${project.featured ? 'featured-project' : ''}">
-      <div class="project-top"><span class="project-meta">${project.type}</span><span class="project-icon" aria-hidden="true">↗</span></div>
-      <h3>${project.name}</h3><p>${project.description}</p>
-      <div class="tags">${project.stack.map(tech => `<span>${tech}</span>`).join('')}</div>
-      <div class="project-links">${links}</div>
-    </article>`;
+function projectUrl(repo) {
+  return repo.startsWith('http') ? repo : `https://github.com/maahfuzdev/${repo}`;
+}
+
+function projectArtwork(project) {
+  if (project.art === 'exam') {
+    return `<div class="project-visual"><a class="exam-shot" href="https://online-exam-app-yirp.onrender.com" target="_blank" rel="noopener" aria-label="Open QuizMaster live demo"><img src="https://raw.githubusercontent.com/maahfuzdev/Online-Exam-website-frontend-and-backend/main/Screenshot%202026-04-23%20034013.png" alt="${project.alt}" loading="lazy"></a><span class="image-caption">TEACHER ANALYTICS · LIVE PRODUCT PREVIEW</span></div>`;
+  }
+  if (project.art === 'share') return `<div class="project-visual visual-share" aria-hidden="true"><div class="share-panel"><div class="share-top"><span>SHAREHUB / COMMUNITY</span><span>● ONLINE</span></div><div class="share-grid"><div class="share-chip"><em>01</em>DONOR<br>ACCOUNT</div><div class="share-chip"><em>02</em>RECIPIENT<br>ACCOUNT</div><div class="share-chip"><em>↔</em>REST API<br>SPRING MVC</div><div class="share-chip"><em>⌘</em>POSTGRES<br>FLYWAY</div></div></div></div>`;
+  if (project.art === 'map') return `<div class="project-visual visual-map" aria-hidden="true"><div class="map-grid"></div><div class="map-route"></div><div class="map-pin"><span>GPS</span></div><span class="image-caption">LOCATION · ROUTE · DISTANCE</span></div>`;
+  if (project.art === 'ai') return `<div class="project-visual visual-ai" aria-hidden="true"><div class="ai-ui"><div class="ai-ui-head"><span>MODEL OUTPUT</span><span>RANDOM FOREST</span></div><div class="ai-chart"><b style="height:40%"></b><b style="height:72%"></b><b style="height:55%"></b><b style="height:92%"></b><b style="height:65%"></b><b style="height:81%"></b></div><div class="ai-chips"><span></span><span></span><span></span></div></div></div>`;
+  if (project.art === 'firebase') return `<div class="project-visual visual-code" aria-hidden="true"><div class="code-window"><div class="code-dots"><i></i><i></i><i></i></div><div class="code-line"><span class="blue">onAuthStateChanged</span>(auth, user =&gt; {</div><div class="code-line">&nbsp; if (user) {</div><div class="code-line">&nbsp;&nbsp; <span class="green">loadCustomerOrders</span>(user.email);</div><div class="code-line">&nbsp; }</div><div class="code-line">});</div><div class="code-line"><span class="blue">Firestore</span> · CUSTOMER DATA</div></div></div>`;
+  return `<div class="project-visual visual-code" aria-hidden="true"><div class="code-window"><div class="code-dots"><i></i><i></i><i></i></div><div class="code-line"><span class="blue">@Controller</span></div><div class="code-line"><span class="green">class</span> UserController {</div><div class="code-line">&nbsp; @GetMapping(<span class="green">"/users"</span>)</div><div class="code-line">&nbsp; <span class="blue">List&lt;User&gt;</span> findAll() {</div><div class="code-line">&nbsp;&nbsp; return userService.findAll();</div><div class="code-line">&nbsp; }</div><div class="code-line">}</div></div></div>`;
+}
+
+function renderFeaturedProjects() {
+  const host = document.getElementById('featuredProjects');
+  host.innerHTML = projectData.map((project, index) => {
+    const actions = `${project.demo ? `<a href="${project.demo}" target="_blank" rel="noopener">Live demo ↗</a>` : ''}<a class="muted-link" href="${projectUrl(project.repo)}" target="_blank" rel="noopener">Source code ↗</a>`;
+    return `<article class="work-card ${project.size} reveal" style="transition-delay:${Math.min(index * 45, 260)}ms">${projectArtwork(project)}<div class="work-copy"><span class="project-meta">${project.kind}</span><h3>${project.name}</h3><p>${project.description}</p><div class="tags">${project.stack.map(item => `<span>${item}</span>`).join('')}</div><div class="project-actions">${actions}</div></div></article>`;
   }).join('');
 }
 
-document.querySelectorAll('.project-filter').forEach(button => button.addEventListener('click', () => {
-  document.querySelectorAll('.project-filter').forEach(filterButton => {
-    const selected = filterButton === button;
-    filterButton.classList.toggle('active', selected);
-    filterButton.setAttribute('aria-pressed', String(selected));
+function renderArchive(filter = 'all') {
+  const host = document.getElementById('archiveGrid');
+  const entries = filter === 'all' ? archiveData : archiveData.filter(project => project.category === filter);
+  host.innerHTML = entries.map(project => `<article class="archive-item"><h4>${project.name}</h4><p>${project.description}</p><a href="${project.demo || projectUrl(project.repo)}" target="_blank" rel="noopener">${project.demo ? 'Live demo ↗' : 'Open repository ↗'}</a><span class="archive-stack">${project.stack}</span></article>`).join('');
+  document.getElementById('archiveCount').textContent = `${archiveData.length} more projects`;
+}
+
+document.querySelectorAll('.archive-filter').forEach(button => button.addEventListener('click', () => {
+  document.querySelectorAll('.archive-filter').forEach(item => {
+    const active = item === button;
+    item.classList.toggle('active', active);
+    item.setAttribute('aria-pressed', String(active));
   });
-  renderProjects(button.dataset.filter);
+  renderArchive(button.dataset.filter);
 }));
 
-renderProjects();
+renderFeaturedProjects();
+renderArchive();
